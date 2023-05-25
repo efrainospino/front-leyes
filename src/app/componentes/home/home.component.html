@@ -1,0 +1,39 @@
+<div class="min-h-screen bg-neutral-300  flex flex-col overflow-hidden sm:py-12 pb-10">
+  <div class="flex mx-7 justify-between select-none mt-7">
+    <div class="w-[27%] flex flex-col items-center justify-center bg-yellow-300 h-[100px] rounded-md font-semibold">
+      <h2 class="text-white text-3xl">72%</h2>
+      <p class="text-white">En Advertencia</p>
+    </div>
+    <div class="w-[27%] flex flex-col items-center justify-center bg-red-400 h-[100px] rounded-md font-semibold">
+      <h2 class="text-white text-3xl">10%</h2>
+      <p class="text-white">En Alerta</p>
+    </div>
+    <div class="w-[27%] flex flex-col items-center justify-center bg-green-400 h-[100px] rounded-md font-semibold">
+      <h2 class="text-white text-3xl">18%</h2>
+      <p class="text-white">En Normal</p>
+    </div>
+  </div>
+  <ng-container *ngIf="clientes && clientes.length > 0; else noClientes">
+    <div *ngFor="let cliente of clientes" class="w-full mt-5 cursor-pointer" [routerLink]="'/edit/' + cliente.id">
+      <div
+        class="mx-7 px-7 py-6 bg-white hover:bg-slate-100 ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start">
+        <i class="fa-regular fa-clock fa-xl mt-3 mr-3"></i>
+        <div class="space-y-2">
+          <p class="text-slate-800">{{ cliente.nombre }}</p>
+          <span class="block text-slate-800 group-hover:text-slate-800 transition duration-200">{{ cliente.fecha_final | date: 'dd/MM/yyyy'
+            }}</span>
+        </div>
+        <span class="ml-auto">145 dias</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noClientes>
+    <div class="w-full mt-5">
+      <div
+        class="mx-7 px-7 py-6 bg-blue-400 ring-1 rounded-lg leading-none flex items-center justify-center ">
+        <p class="text-white">No existen clientes aún.</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

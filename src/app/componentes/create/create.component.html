@@ -1,0 +1,31 @@
+<div class="max-w-sm mx-auto my-10 rounded-lg bg-slate-300 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+  <form class="flex flex-col" [formGroup]="clienteForm" (ngSubmit)="createCliente()">
+    <label for="exampleInputEmail2">Nombre</label>
+    <input formControlName="nombre" type="text" class="mb-6 px-2 py-1 rounded-md mt-2" id="exampleInputEmail2"
+      aria-describedby="emailHelp" placeholder="Ingresa nombre" name="nombre" />
+
+    <label>Desde</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Escoger fecha inicial</mat-label>
+      <input matInput [matDatepicker]="picker" id="fechainicial" formControlName="fecha_inicial">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <label class="mt-3">Hasta</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Escoger fecha Final</mat-label>
+      <input matInput formControlName="fecha_final" id="fecha_final" name="fecha_final" [matDatepicker]="picker2">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <label for="calcular" class="mt-3">Calcular con tiempo (meses)</label>
+    <input type="text" class="mb-6 px-2 py-1 rounded-md mt-2" placeholder="Calcular número de meses" id="calcular"
+      formControlName="calcular" (input)="onInputChange($event)">
+
+    <button class="mx-auto bg-teal-800 px-2 py-1 rounded-md text-white">Crear</button>
+  </form>
+</div>
